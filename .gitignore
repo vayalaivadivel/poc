@@ -1,0 +1,30 @@
+# Created by .ignore support plugin (hsz.mobi)
+/build
+/poc-core/build
+
+# application gradle files and dependencies
+/.gradle
+/lib
+
+# logs
+/stacktrace.log
+/test/reports
+/logs
+
+# project release file
+/*.war
+
+# "temporary" build files
+/target
+
+#Idea files
+/*.iml
+/.idea
+
+/wrapper
+
+/out
+
+/.nb-gradle/
+
+/.nb-gradle
