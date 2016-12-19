@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE'
+        classpath 'io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE'
+    }
+}
+
+
+ext {
+    commons_lang_version = '2.6'
+    commons_collections_version = '4.1'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'io.spring.dependency-management'
+
+    group 'org.poc'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    dependencies{
+        compile 'org.springframework.boot:spring-boot-starter-jdbc:1.4.2.RELEASE'
+        compile 'org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE'
+        compile 'io.springfox:springfox-swagger2:2.0.1'
+        compile 'com.fasterxml.jackson.core:jackson-databind:2.8.5'
+
+        compile 'org.springframework.boot:spring-boot-starter-actuator:1.4.2.RELEASE'
+        compile 'org.springframework.boot:spring-boot-actuator-docs:1.4.2.RELEASE'
+    }
+}
+
+
+subprojects {
+    configurations {
+        integrationTest.extendsFrom testRuntime
+    }
+
+    configurations {
+        all*.exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+
+    sourceSets {
+        integrationTest {
+            groovy.srcDir file("src/test-integration/groovy")
+            java.srcDir file("src/test-integration/java")
+            resources.srcDir file("src/test-integration/resources")
+
+            compileClasspath = sourceSets.main.output + sourceSets.test.output + configurations.integrationTest
+            runtimeClasspath = output + compileClasspath
+        }
+    }
+
+    task integrationTest(type: Test) {
+        testClassesDir = sourceSets.integrationTest.output.classesDir
+        classpath = sourceSets.integrationTest.runtimeClasspath
+
+        reports.junitXml.destination = "$buildDir/reports/test-integration"
+        reports.html.destination = "$buildDir/reports/test-integration"
+    }
+}
+/*
+task boot(type: JavaExec, dependsOn: build) {
+    main = '-jar'
+    args = [jar.archivePath, '--spring.profiles.active=local']
+}*/

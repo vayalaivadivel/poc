@@ -1,0 +1,8 @@
+server:
+  port: 9001
+  contextPath: /employee
+
+spring.datasource:
+  url: jdbc:postgresql://localhost:5432/demodb
+  username: demouser
+  password: demo@123
