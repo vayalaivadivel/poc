@@ -1,4 +1,6 @@
 package org.poc.employee;
+
+import org.poc.core.config.SwaggerConfig;
 import org.poc.employee.config.EmployeeBeanConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +13,7 @@ import org.springframework.context.annotation.Import;
  * @author vadivel 12/14/2016
  */
 @SpringBootApplication
-@Import({EmployeeBeanConfig.class})
+@Import({EmployeeBeanConfig.class, SwaggerConfig.class})
 public class Application {
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);

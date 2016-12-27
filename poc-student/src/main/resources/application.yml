@@ -6,3 +6,15 @@ spring.datasource:
   url: jdbc:postgresql://localhost:5432/demodb
   username: demouser
   password: demo@123
+
+swagger.api:
+  title: 'Employee Rest Service'
+  description: 'Rest service api for Employee CRUD operation'
+  version: 'poc-employee-1.0.0'
+  termsOfServiceUrl: 'http://localhost:9001'
+  license: 'Test licence'
+  licenseUrl: 'http://www.test.com/licence'
+  contact:
+    name: 'VADIVEL P M'
+    url: 'http://www.test.com'
+    email: 'vayalaivadivel@gmail.com'
