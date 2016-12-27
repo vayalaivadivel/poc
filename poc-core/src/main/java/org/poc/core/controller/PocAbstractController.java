@@ -1,7 +1,6 @@
 package org.poc.core.controller;
 
-import com.wordnik.swagger.annotations.*;
-
+import io.swagger.annotations.*;
 import org.poc.core.exception.InvalidRequestBodyException;
 import org.poc.core.exception.NoDataFoundException;
 import org.poc.core.exception.AuthenticationException;
@@ -18,7 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
+
 
 /**
  * It is a abstract controller used by both Student-Service and Employee-Service since those those two services

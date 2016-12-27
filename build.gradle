@@ -29,7 +29,7 @@ allprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-    dependencies{
+    dependencies {
         compile 'org.springframework.boot:spring-boot-starter-jdbc:1.4.2.RELEASE'
         compile 'org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE'
         compile 'io.springfox:springfox-swagger2:2.0.1'
@@ -37,6 +37,9 @@ allprojects {
 
         compile 'org.springframework.boot:spring-boot-starter-actuator:1.4.2.RELEASE'
         compile 'org.springframework.boot:spring-boot-actuator-docs:1.4.2.RELEASE'
+
+        compile 'io.springfox:springfox-swagger2:2.6.1'
+        compile 'io.springfox:springfox-swagger-ui:2.6.1'
     }
 }
 
@@ -69,8 +72,16 @@ subprojects {
         reports.html.destination = "$buildDir/reports/test-integration"
     }
 }
-/*
-task boot(type: JavaExec, dependsOn: build) {
-    main = '-jar'
-    args = [jar.archivePath, '--spring.profiles.active=local']
-}*/
+
+/*ext.depends = [
+    swagger: [
+        'io.springfox:springfox-swagger2',
+        'io.springfox:springfox-swagger-ui'
+    ],
+    spock  : [
+        'org.codehaus.groovy:groovy-all',
+        'org.spockframework:spock-core',
+        'org.spockframework:spock-spring',
+        'org.springframework:spring-test',
+    ]
+]*/
